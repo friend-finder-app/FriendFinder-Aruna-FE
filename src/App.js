@@ -17,9 +17,9 @@ function App() {
           <li><NavLink to='/signup'>Sign Up</NavLink></li>
           <li><NavLink to='/signin'>Sign In</NavLink></li>
         </ul>
-        <PrivateRoute path='/' component={GetUserMatch}/>
-        <Route path='/signin' component={SignIn}/>
-        <Route path='/signup' component={SignUp}/>
+        <PrivateRoute path='/' component={GetUserMatch} />
+        <Route path='/signin' component={SignIn} />
+        <Route path='/signup' component={SignUp} />
       </div>
     </Router>
   );
@@ -33,4 +33,3 @@ export default connect(
   mapStateToProps
 )(App)
 
-// export default App;

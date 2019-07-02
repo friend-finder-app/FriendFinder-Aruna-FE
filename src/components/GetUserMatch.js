@@ -38,7 +38,7 @@ class GetUserMatch extends React.Component {
                             <User users={users} key={users.id} />
                         )}
                         {!this.props.matchingUsers && this.props.match.map(matches =>
-                            <Match matches={matches} key={matches.id} user={this.props.user} />
+                            <Match matches={matches} key={matches.id}  />
                         )}
 
                         <button onClick={this.getSpecificMatches}>Get Match</button>

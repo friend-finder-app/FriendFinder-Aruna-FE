@@ -6,8 +6,6 @@ class SignIn extends React.Component {
     constructor() {
         super()
         this.state = {
-            // email: '',
-            // password: ''
             "username": '',
             "password": '',
             "email": '',
@@ -57,43 +55,7 @@ class SignIn extends React.Component {
                         onChange={this.handleProp}
                         name="password"
                     />
-                    {/* <input
-                        type='email'
-                        placeholder="email*"
-                        value={this.state.email}
-                        onChange={this.props.handleProp}
-                        name="email"
-                    />
-                    <input
-                        placeholder="phoneNumber*"
-                        value={this.state.phoneNumber}
-                        onChange={this.props.handleProp}
-                        name="phoneNumber"
-                    />
-                    <input
-                        placeholder="profilePic"
-                        value={this.state.profilePic}
-                        onChange={this.props.handleProp}
-                        name="profilePic"
-                    />
-                    <input
-                        placeholder="aboutMe"
-                        value={this.state.aboutMe}
-                        onChange={this.props.handleProp}
-                        name="aboutMe"
-                    />
-                    <input
-                        placeholder="interests"
-                        value={this.state.interests}
-                        onChange={this.props.handleProp}
-                        name="interests"
-                    />
-                    <input
-                        placeholder="distance"
-                        value={this.state.interests}
-                        onChange={this.props.handleProp}
-                        name="distance"
-                    /> */}
+
                     <button>Submit User</button>
                 </form>
             </div>
@@ -111,4 +73,3 @@ export default connect(
     mapStateToProps, { login }
 )(SignIn)
 
-// export default SignIn

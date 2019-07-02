@@ -5,7 +5,7 @@ import { signup } from '../actions'
 class SignUp extends React.Component {
     constructor() {
         super()
-        this.state = {        
+        this.state = {
             "username": '',
             "password": '',
             "email": '',
@@ -109,4 +109,3 @@ export default connect(
     mapStateToProps, { signup }
 )(SignUp)
 
-// export default SignUp

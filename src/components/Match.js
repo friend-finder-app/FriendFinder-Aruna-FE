@@ -1,7 +1,6 @@
-// import distance from 'google-distance'
 import React from 'react'
 import { connect } from 'react-redux'
-import { sendMatchUserMessage,calculateCitiesDistance } from '../actions'
+import { sendMatchUserMessage, calculateCitiesDistance } from '../actions'
 
 
 class Match extends React.Component {
@@ -15,7 +14,9 @@ class Match extends React.Component {
             },
             submitting: false,
             error: false,
-            calcDistance: 0
+            calcDistance: 0,
+            travelMode: '',
+
         }
     }
 
@@ -32,7 +33,7 @@ class Match extends React.Component {
         })
 
         // console.log('message ', this.state.message)
-        // this.props.sendMatchUserMessage(this.state.message)
+
         this.sendMessage()
 
             .then(data => {
@@ -61,33 +62,20 @@ class Match extends React.Component {
         return await this.props.sendMatchUserMessage(this.state.message)
     }
 
-    handleDistance = () => {
-        this.calculateDistance()
-        
+
+    handleDistance = (event) => {
+        event.preventDefault()
+        console.log('logged in user address ', this.props.user[0].address)
+        console.log('matched user address ', this.props.matches.address)
+        var destinations = this.props.matches.address
+        var origins = this.props.user[0].address
+        var travelMode = this.state.travelMode.length ? this.state.travelMode : 'WALKING'
+
+        this.props.calculateCitiesDistance(origins, destinations, travelMode)
+
+
     }
 
-    calculateDistance = async () => {
-        console.log('Match component calculateDistance origin ',this.props.user.address)
-    console.log('Match component calculateDistance destination ',this.props.matches.address)
-        await this.props.calculateCitiesDistance(this.props.user.address,this.props.matches.address)
-        await this.setState({
-            calcDistance:this.props.reducerDistance
-        })
-    }
-
-    // calculateDistance = async () => {
-        
-    //     // var distance = require('google-distance');
-    //     await distance.get(
-    //         {
-    //             origin: 'San Francisco, CA',
-    //             destination: 'San Diego, CA'
-    //         },
-    //         function (err, data) {
-    //             if (err) return console.log(err);
-    //             console.log(data);
-    //         });
-    // }
 
 
     render() {
@@ -100,23 +88,23 @@ class Match extends React.Component {
                 <p>{this.props.matches.address}</p>
                 <p>{this.props.matches.aboutMe}</p>
                 <p>{this.props.matches.interests}</p>
-                <p>Distance : {this.state.calcDistance}<button onClick={this.handleDistance}>Get Distance</button></p>
+                <p>Distance : {this.props.reducerDistance}<button onClick={this.handleDistance}>Get Distance</button></p>
 
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => ({
-    reducerDistance: state.reducerDistance,
-   
-    gettingDistance: state.gettingDistance
-})
+const mapStateToProps = (state) => (
+    {
+        reducerDistance: state.reducerDistance,
+        user: state.users,
+        gettingDistance: state.gettingDistance
+    })
 
 export default connect(
-    mapStateToProps, { sendMatchUserMessage,calculateCitiesDistance }
+    mapStateToProps, { sendMatchUserMessage, calculateCitiesDistance }
 )(Match)
 
 
-// export default Match
 

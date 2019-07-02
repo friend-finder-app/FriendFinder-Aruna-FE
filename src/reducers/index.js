@@ -36,7 +36,7 @@ const initialState = {
     gettingDistance: false,
     match: [],
     msg: '',
-    reducerDistance:''
+    reducerDistance: ''
 }
 
 export const reducer = (state = initialState, action) => {
@@ -164,13 +164,13 @@ export const reducer = (state = initialState, action) => {
                 error: ''
             };
         case GET_DISTANCE_SUCCESS:
-            console.log('reducer POST_MESSAGE_SUCCESS action payload ', action.payload)
+            console.log('reducer GET_DISTANCE_SUCCESS action payload ', action.payload[0].elements[0].distance.text)
 
             return {
                 ...state,
                 gettingDistance: false,
                 inUserPage: true,
-                reducerDistance: action.payload,
+                reducerDistance: action.payload[0].elements[0].distance.text,
                 error: ''
             };
         case GET_DISTANCE_FAILURE:
