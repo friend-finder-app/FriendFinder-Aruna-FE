@@ -117,7 +117,7 @@ export const calculateCitiesDistance = (origin,destination) => dispatch => {
 
   
   return axios
-    .get('http://maps.googleapis.com/maps/api/distancematrix/json?origins=Seattle+WA&destinations=San+Francisco+CA&key=AIzaSyCE2-NVqHJsJToglIOy9n1rR7nbu75lle4'
+    .get('http://maps.googleapis.com/maps/api/distancematrix/json?origins=Seattle+WA&destinations=San+Francisco+CA&key=GOOGLE_API_KEY'
     )
 
     // .res.header('Access-Control-Allow-Origin: *')
